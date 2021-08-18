@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:custom_card/pages/order_page.dart';
 import 'package:flutter/material.dart';
 
 class MyCardView extends StatefulWidget {
@@ -13,50 +14,57 @@ class MyCardView extends StatefulWidget {
 class _MyCardViewState extends State<MyCardView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: widget.width,
-      height: widget.height,
-      child: CustomPaint(
-        painter: CardPainter(),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Positioned(
-              child: Text(
-                "200 EG",
-                style: TextStyle(color: Colors.red[900], fontSize: 26),
+    return InkWell(
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => OrderPage(),
+        ),
+      ),
+      child: Container(
+        width: widget.width,
+        height: widget.height,
+        child: CustomPaint(
+          painter: CardPainter(),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Positioned(
+                child: Text(
+                  "200 EG",
+                  style: TextStyle(color: Colors.red[900], fontSize: 26),
+                ),
+                top: widget.height * 0.08,
               ),
-              top: widget.height * 0.08,
-            ),
-            Positioned(
-              child: Text(
-                "3",
-                style: TextStyle(
-                    color: Colors.red[900],
-                    fontSize: 140,
-                    fontWeight: FontWeight.bold),
+              Positioned(
+                child: Text(
+                  "3",
+                  style: TextStyle(
+                      color: Colors.red[900],
+                      fontSize: 140,
+                      fontWeight: FontWeight.bold),
+                ),
+                top: widget.height * 0.26,
               ),
-              top: widget.height * 0.26,
-            ),
-            Positioned(
-              child: Text(
-                "Ticket",
-                style: TextStyle(color: Colors.red[900], fontSize: 25),
+              Positioned(
+                child: Text(
+                  "Ticket",
+                  style: TextStyle(color: Colors.red[900], fontSize: 25),
+                ),
+                top: widget.height * 0.58,
               ),
-              top: widget.height * 0.58,
-            ),
-            Positioned(
-              child: RaisedButton(
-                  padding: EdgeInsets.symmetric(vertical: 13),
-                  onPressed: () {},
-                  color: Colors.greenAccent[400],
-                  shape: StadiumBorder(),
-                  child: Text("Buy",
-                      style: TextStyle(color: Colors.white, fontSize: 23))),
-              top: widget.height * 0.88,
-              width: widget.width * 0.9,
-            ),
-          ],
+              Positioned(
+                child: RaisedButton(
+                    padding: EdgeInsets.symmetric(vertical: 13),
+                    onPressed: () {},
+                    color: Colors.greenAccent[400],
+                    shape: StadiumBorder(),
+                    child: Text("Buy",
+                        style: TextStyle(color: Colors.white, fontSize: 23))),
+                top: widget.height * 0.88,
+                width: widget.width * 0.9,
+              ),
+            ],
+          ),
         ),
       ),
     );
